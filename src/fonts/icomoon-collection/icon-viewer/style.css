@@ -1,0 +1,64 @@
+@font-face {
+	font-family: 'icomoon-collection';
+	src:url('fonts/icomoon-collection.eot?tq1wdx');
+	src:url('fonts/icomoon-collection.eot?#iefixtq1wdx') format('embedded-opentype'),
+		url('fonts/icomoon-collection.woff?tq1wdx') format('woff'),
+		url('fonts/icomoon-collection.ttf?tq1wdx') format('truetype'),
+		url('fonts/icomoon-collection.svg?tq1wdx#icomoon-collection') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon-collection';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-testing:before {
+	content: "\e60c";
+}
+.icon-xmas:before {
+	content: "\e601";
+}
+.icon-home:before {
+	content: "\e600";
+}
+.icon-herritage:before {
+	content: "\e602";
+}
+.icon-asset-video:before {
+	content: "\e603";
+}
+.icon-asset-sound:before {
+	content: "\e605";
+}
+.icon-asset-image:before {
+	content: "\e606";
+}
+.icon-about:before {
+	content: "\e604";
+}
+.icon-food_further:before {
+	content: "\e60b";
+}
+.icon-camera:before {
+	content: "\e607";
+}
+.icon-video:before {
+	content: "\e608";
+}
+.icon-camera2:before {
+	content: "\e609";
+}
+.icon-facetime-video:before {
+	content: "\e60a";
+}

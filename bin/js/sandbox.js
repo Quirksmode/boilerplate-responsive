@@ -1,0 +1,1 @@
+$("#responsive-example-table").stacktable({myClass:"choose-plan-alternate"});

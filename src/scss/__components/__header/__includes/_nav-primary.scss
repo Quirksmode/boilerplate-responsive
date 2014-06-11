@@ -1,0 +1,220 @@
+/**
+ * @class css.components.header.nav
+ *
+ * Header Styles
+ *
+ * ## Usage
+ * Import into your main file using
+ *
+ *     @import "__components/__header/__includes/nav-primary";
+ *
+ */
+
+.nav-primary {
+    position: fixed;
+    top: 66px;
+    bottom: 0;
+    width: 300px;
+    background-color: #333;
+    z-index: 10;
+    overflow: hidden;
+    padding-bottom: 60px;
+
+    .popup-show & {
+        z-index: 10000;
+    }
+
+    .level-wrap {
+        position: relative;
+        width: 600px;
+        overflow: hidden;
+        height: 100%;
+    }
+
+    .level-1,
+    .level-2 {
+        padding: 5px;
+        width: 300px;
+        height: 100%;
+        float: left;
+        position: relative;
+
+
+        .vscroll {
+            position: relative;
+            overflow: hidden;
+            padding-right: 11px;
+            height: 100%;
+        }
+    }
+
+    .padded-item {
+
+        display: table-cell;
+        border-bottom: 1px solid #5e5e5e;
+        vertical-align: middle;
+        width: 100%;
+        float: left;
+        margin-top: 5px;
+        padding: 0 0 5px 5px;
+
+        &.selected,
+        &:hover {
+            a {
+                background-color: #2d2829;
+                text-decoration: none;
+            }
+        }
+
+        &.home-item {
+            border: none;
+            margin: 0;
+        }
+
+        &.with-icon {
+            padding: 0 0 5px;
+
+            a {
+                padding: 0;
+            }
+        }
+
+        &.fixed-bottom {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 0 5px;
+            border: none;
+            background: #333;
+            z-index: 100;
+
+            a {
+                border-top: 1px solid #5e5e5e;
+                padding: 5px 0;
+            }
+        }
+
+        &.back-to {
+            border: none;
+            margin: 0 0 10px;
+            padding-left: 0;
+
+            span {
+                @include transition(color 0.3s ease-out);
+            }
+
+            &:hover span {
+                color: #f7921c;
+                text-decoration: none;
+            }
+
+            a {
+                padding-left: 35px;
+            }
+        }
+
+        a,
+        h2 {
+            @include font(16, 20, $font-roboto);
+            @include transition(background-color 0.3s ease-out);
+            font-weight: 400;
+            color: #fff;
+            display: block;
+            vertical-align: middle;
+            position: relative;
+            padding: 19px 10px 19px 15px;
+
+            &.theme-border {
+                border-style:solid;
+                border-width:0 0 0 4px;
+            }
+
+            .arrow-right,
+            .arrow-left {
+                @include font(22, 22);
+                position: absolute;
+                right: 5px;
+            }
+
+            .arrow-left {
+               right: auto;
+               left: 5px;
+            }
+        }
+
+        h2 {
+            padding: 19px 10px 19px 5px;
+        }
+
+    }
+
+    .menu-icon {
+        @include font(30, 30);
+        padding: 10px;
+        text-align: center;
+        vertical-align: middle;
+        margin-right: 10px;
+        display: inline-block;
+    }
+
+    .level-1 {
+        ul {
+            ul {
+                .js & {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    ul,
+    .level-2 {
+        ul {
+            clear: both;
+            list-style-type: none;
+            padding: 0 10px 0 20px;
+
+            li {
+                margin-bottom: 15px;
+
+                a {
+                    @include font(14, 16, $font-roboto);
+                    @include transition(color 0.3s ease-out);
+                    color: #fff;
+                }
+
+                &.selected,
+                &:hover {
+                    > a {
+                        color: #f7921c;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+
+    // This is for the non JS version
+    ul {
+        ul {
+            padding: 15px 10px 20px 20px;
+            border-top: 1px solid #5e5e5e;
+            margin-top: 5px;
+        }
+    }
+
+
+    // No Javascript styles
+    .no-js & {
+        .level-wrap {
+            width: 100%;
+        }
+        .level-1 {
+            width: 100%;
+        }
+        .level-2 {
+            display: none;
+        }
+    }
+
+}

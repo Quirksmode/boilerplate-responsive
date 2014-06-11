@@ -1,0 +1,33 @@
+/**
+ * @class css.components.parallax-block
+ *
+ * Header Styles
+ *
+ * ## Usage
+ * Import into your main file using
+ *
+ *     @import "__components/_parallax-block
+ */
+
+// The parallax blocks are moved to their own layer to increase performance with 3D Transform
+.parallax-block {
+	position: fixed;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	z-index: -1;
+	max-width: none !important;
+	max-height: none !important;
+	backface-visibility: hidden;
+	perspective: 1000px;
+}
+
+	.parallax-image {
+		position: absolute;
+		top: 0;
+		left: 0;
+		max-width: none !important;
+		max-height: none !important;
+		backface-visibility: hidden;
+		perspective: 1000px;
+	}

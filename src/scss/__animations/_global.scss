@@ -1,0 +1,72 @@
+/**
+ * @class css.components.header.nav
+ *
+ * Header Styles
+ *
+ * ## Usage
+ * Import into your main file using
+ *
+ *     @import "__animations/nav-primary";
+ *
+ */
+
+@include keyframe(fadeInUp) {
+    0% {
+        visibility: visible;
+        opacity: 0;
+        top: 40px;
+        //@include transform(translateY(40px));
+    }
+
+    100% {
+        visibility: visible;
+        opacity: 1;
+        top: 0;
+        //@include transform(translateY(0));
+    }
+}
+
+@include keyframe(fadeOutUp) {
+    0% {
+        visibility: visible;
+        opacity: 1;
+        top: 0;
+        //@include transform(translateY(0));
+    }
+
+    100% {
+        visibility: visible;
+        opacity: 0;
+        top: 40px;
+        //@include transform(translateY(40px));
+    }
+}
+
+@include keyframe(animrotate) {
+    0% {
+        @include transform(rotate(0));
+    }
+    100% {
+        @include transform(rotate(360deg));
+    }
+}
+
+
+.no-touch {
+    .anim-init {
+        visibility: hidden;
+
+        &.anim-fadeInUp {
+            @include animation(fadeInUp, 1.5s, ease, 0, initial, normal, running, forwards);
+        }
+        &.anim-fadeOutUp {
+            @include animation(fadeOutUp, 1s, ease, 0, initial, normal, running, forwards);
+        }
+    }
+}
+
+.lt-ie10 {
+    .anim-init {
+        visibility: visible;
+    }
+}

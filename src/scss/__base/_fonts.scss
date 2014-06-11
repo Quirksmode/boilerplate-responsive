@@ -1,0 +1,149 @@
+/**
+ * @class css.base.fonts
+ *
+ * Here we define the font styles
+ *
+ * ## Usage
+ * Import into your main file using
+ *
+ *     @import "__base/_fonts.scss";
+ *
+ */
+
+/**
+ * @cfg {String} $font-roboto - Sans Serif font
+ */
+$font-roboto: 'Roboto', sans-serif;
+/**
+ * @cfg {String} $font-merriweather - Serif font
+ */
+$font-merriweather: 'Merriweather', serif;
+/**
+ * @cfg {String} $font-arial - Sans Serif font
+ */
+$font-arial: Arial, "Helvetica Neue", Helvetica, sans-serif;
+
+
+/**
+ * @cfg {String} $font-icomoon-main - Icon font
+ */
+$font-icomoon-main: 'icomoon-main';
+/**
+ * @cfg {String} $font-icomoon-collection - Icon font
+ */
+$font-icomoon-collection: 'icomoon-collection';
+
+/*
+* Font Imports
+*/
+
+@font-face {
+    font-family: $font-icomoon-main;
+    src:url('../fonts/icomoon-main/icomoon-main.eot?-ozmudd');
+    src:url('../fonts/icomoon-main/icomoon-main.eot?#iefix-ozmudd') format('embedded-opentype'),
+        url('../fonts/icomoon-main/icomoon-main.ttf?-ozmudd') format('truetype'),
+        url('../fonts/icomoon-main/icomoon-main.woff?-ozmudd') format('woff'),
+        url('../fonts/icomoon-main/icomoon-main.svg?-ozmudd#icomoon-main') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: $font-icomoon-collection;
+    src:url('../fonts/icomoon-collection/icomoon-collection.eot?lz5m38');
+    src:url('../fonts/icomoon-collection/icomoon-collection.eot?#iefixlz5m38') format('embedded-opentype'),
+        url('../fonts/icomoon-collection/icomoon-collection.ttf?lz5m38') format('truetype'),
+        url('../fonts/icomoon-collection/icomoon-collection.woff?lz5m38') format('woff'),
+        url('../fonts/icomoon-collection/icomoon-collection.svg?lz5m38#icomoon-collection') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+// Data attribute method for inserting Icon Font
+[data-icon-main]:before,
+[data-icon-collection]:before,
+[class^="icon-"], [class*=" icon-"] {
+    @include anti-alias-text;
+    font-family: $font-icomoon-main;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    content: attr(data-icon-main);
+}
+
+// Data attribute method for inserting Icon Font
+[data-icon-collection]:before {
+    font-family: $font-icomoon-collection;
+    content: attr(data-icon-collection);
+}
+
+.icon-slider_arrow_right:before {
+    content: "\e605";
+}
+
+.icon-spinner:before {
+    content: "\e614";
+}
+
+
+/**
+ * @cfg {String} html - The globally used font styles are declared here
+ */
+html {
+	font-size: 62.5%;
+	-webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+body {
+	font-family: $font-roboto;
+	word-wrap: break-word;
+}
+
+h1 {
+	@include font(21, 25, $font-roboto);
+    font-weight: 300;
+    color: #655248;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+	@include font(30, 34, $font-roboto);
+}
+
+p,
+li {
+	@include font(16, 26);
+}
+
+a {
+	text-decoration: none;
+    color: $color-plum;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+// Better font rendering
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+a,
+span,
+input,
+label,
+time {
+    @include anti-alias-text;
+}

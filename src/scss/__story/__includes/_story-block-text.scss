@@ -1,0 +1,67 @@
+/**
+ * @class css.
+ *
+ *
+ * ## Usage
+ * Import into your main file using
+ *
+ *     @import "__";
+ *
+ */
+
+.story-block-text {
+	background: #fff;
+
+	.structure-wrap {
+		padding: 50px 0 10px;
+	}
+
+	.text-wrap {
+		max-width: 640px;
+
+		p {
+			@include font(16, 25, $font-roboto);
+			margin-bottom: 6.5%;
+			color: $colour-story-body;
+			font-weight: 300;
+		}
+
+		aside {
+
+			margin-bottom: 8.3%; // 50px;
+
+			p {
+				margin-bottom: 0;
+			}
+
+			// Media Query: From desktop and up
+			@include mq($from: desktop) {
+				float: right;
+				max-width: 470px;
+				margin: 0 -235px 50px 50px;
+				width: 80%;
+			}
+
+			blockquote {
+				border: 1px solid #959595;
+				border-style: solid none;
+				padding: 18px;
+
+				.quote {
+					@include font(22,30, $font-merriweather);
+					font-weight: 300;
+					color: #000;
+					margin: 0;
+				}
+
+		        .author {
+		        	@include font(16, 20, $font-roboto);
+		        	margin: 20px 0 0 0;
+		        	color: $colour-story-body;
+		        }
+			}
+		}
+	}
+
+
+}

@@ -1,0 +1,135 @@
+/**
+ * @class css.assets.asset-zoomslider
+ *
+ * Use this for default page styles that apply to all pages
+ *
+ * ## Usage
+ * Import into your main file using
+ *
+ *     @import "__assets/asset-zoomslider";
+ *
+ */
+
+
+$z-index-base: 10100 !default;
+
+/*  General CSS resets;
+ *    The target itself is not affected, allowing
+ *    the remainder of the document to use an
+ *    alternate box-sizing model;
+ *    Support for box-sizing is wide spread:
+ *    http://caniuse.com/#search=box-sizing
+ */
+  .noUi-target * {
+-webkit-touch-callout: none;
+    -ms-touch-action: none;
+-webkit-user-select: none;
+   -moz-user-select: none;
+    -ms-user-select: none;
+    cursor: default;
+  }
+
+/*  Main slider bar;
+ *    Use box-shadow instead of border to keep absolute
+ *    positioning unrelated to the styling.
+ */
+  .noUi-base {
+    width: 74%;
+    left: 13%;
+    height: 36px;
+    position: absolute;
+    bottom: 0;
+    z-index: $z-index-base + 1;
+
+    @include background-transparent(#000, .8);
+    border: 1px solid #7a7a7a;
+    border-style: solid none;
+
+    @include mq($from: tablet) {
+      right: 66px;
+      width: 72px;
+      left: auto;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+/*  Handles + active state;
+ */
+  .noUi-handle {
+    cursor: pointer;
+    top: -1px;
+    left: -5px;
+    width: 12px;
+    height: 36px;
+    z-index: $z-index-base + 2;
+    position: relative;
+    background: #999;
+  }
+  .noUi-active {
+    background: #666;
+  }
+
+/*  Styling-only classes;
+ *    Structured to prevent double declarations
+ *    for various states of the slider.
+ */
+  .noUi-connect {
+    background: Teal;
+    @include transition(background 0.6s);
+  }
+
+/*  Functional styles for handle positioning;
+ *    Note that the origins will inherit border radius
+ *    from the parent, even though the default theme
+ *    doesn't use curved borders.
+ */
+  .noUi-origin {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: inherit;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .noUi-origin + .noUi-origin {
+    background: inherit !important;
+  }
+  .noUi-z-index {
+    z-index: $z-index-base + 3;
+  }
+
+
+
+/*  Slider disabled state;
+ */
+  [disabled] .noUi-base {
+    background: #DDD;
+  }
+  [disabled] .noUi-handle {
+    background: #F7F7F7;
+    cursor: not-allowed;
+  }
+  [disabled] .noUi-connect {
+    background: #EEE;
+  }
+
+/*  Transition states;
+ *    Support for transition is widely available,
+ *    Only IE7, IE8 and IE9 will ignore these rules.
+ *    Since this is merely a progressive enhancement,
+ *    this is no problem at all.
+ *    http://caniuse.com/#search=transition
+ */
+  .noUi-state-tap .noUi-origin {
+    -webkit-transition: left 0.3s, top 0.3s;
+    transition: left 0.3s, top 0.3s;
+  }
+  .noUi-state-blocked .noUi-connect {
+    background: #7f8c8d;
+  }

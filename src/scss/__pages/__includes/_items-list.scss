@@ -1,0 +1,350 @@
+/**
+ * @class css.pages.items-list
+ *
+ *
+ * ## Usage
+ * Import into your main file using
+ *
+ *     @import "__pages/__includes/_items-list.scss";
+ *
+ */
+
+.items-list {
+
+	.item {
+		position: relative;
+		overflow: hidden;
+		cursor: pointer;
+
+		.no-js & {
+			margin: 0 0 1% 1%;
+			float: left;
+		}
+
+		a {
+			color: #000;
+		}
+
+		.rollover {
+			@extend .cf;
+		}
+
+		&.item-asset-video {
+			.icon-video {
+				background: url(../img/items/icon-video.png) 50% 50% no-repeat;
+				@include image-2x("../img/items/icon-video-2x.png", 70px, 81px);
+				left: 0;
+			    margin: auto;
+			    position: absolute;
+			    right: 0;
+			    top: 0;
+			    bottom: 0;
+			    z-index: 200;
+			}
+		}
+
+		@include mq($from: tablet) {
+
+			&:hover {
+
+				.no-touch & {
+					.rollover {
+						@include background-transparent(#000, 0.8);
+				    	cursor: pointer;
+
+				    	.rollover-inner-align {
+				    		@include opacity(1);
+				    	}
+					}
+
+					&.item-story {
+				    	.description {
+							bottom: 0;
+						}
+
+						img {
+							top: -35%;
+						}
+
+						.story-indicator {
+							bottom: 38%;
+						}
+				    }
+
+				    &.item-collection {
+				    	.collection-indicator {
+				    		@include background-transparent(#000, 0.2);
+				    	}
+				    }
+				}
+
+		    }
+
+		}
+
+		.rollover {
+			@include transition(background 0.3s ease-out);
+			@include background-transparent(#000, 0);
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+		    position: absolute;
+		    text-align: center;
+		    height: 100%;
+		    width: 100%;
+		    z-index: 250;
+
+		    .rollover-inner {
+		    	display: table;
+		    	width: 100%;
+		    	height: 100%;
+		    }
+
+		    	.rollover-inner-align {
+		    		@include transition(opacity 0.3s ease-out);
+		    		@include opacity(0);
+			    	display: table-cell;
+			    	vertical-align: middle;
+			    	padding: 5% 10%;
+
+			    	.lt-ie9 & {
+			    		padding: 0;
+			    	}
+			    }
+
+
+				    .item-icon {
+						@include font(50, 50);
+						display: inline-block;
+						color: #fff;
+						z-index: 300;
+						text-align: center;
+						margin-bottom: 10px;
+					}
+
+					h2,
+					h3 {
+						@include font(15, 21, $font-roboto);
+						font-weight: 300;
+						color: #fff;
+					}
+		}
+
+
+
+		img {
+			@include transition(top 0.4s ease);
+			position: absolute;
+			top: 0;
+			left: 0;
+			max-width: none;
+			width: 100%;
+			z-index: 150;
+			text-align: center;
+		}
+
+		&.item-large {
+			width: 380px;
+      		height: 380px;
+		}
+
+		&.item-small {
+			width: 205px;
+      		height: 205px;
+		}
+
+		&.item-wide {
+			width: 300px;
+      		height: 150px;
+
+			img {
+				top: -50%;
+			}
+		}
+
+		&.item-tall {
+			width: 150px;
+      		height: 300px;
+
+			img {
+				width: 207%;
+				left: -75%;
+			}
+		}
+
+
+		@include mq($from: tablet) {
+			&.item-large {
+				width: 410px;
+	      		height: 410px;
+			}
+
+			&.item-small {
+				width: 205px;
+	      		height: 205px;
+			}
+
+			&.item-wide {
+				width: 410px;
+	      		height: 205px;
+			}
+
+			&.item-tall {
+				width: 205px;
+	      		height: 410px;
+			}
+		}
+
+		@include mq($from: smalldesktop) {
+			&.item-large {
+				width: 500px;
+	      		height: 500px;
+			}
+
+			&.item-small {
+				width: 250px;
+	      		height: 250px;
+			}
+
+			&.item-wide {
+				width: 500px;
+	      		height: 250px;
+			}
+
+			&.item-tall {
+				width: 250px;
+	      		height: 500px;
+			}
+		}
+
+
+	}
+
+		// Shared Styles
+		.item-overlay-text {
+			// This adds a darkened background to the overlay as the text is so hard to read
+			background: url(../img/stories/grad-overlay-top.png) 0 0 no-repeat;
+			background-size: 100% 225%;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			z-index: 250;
+			color: #fff;
+			padding: 6%;
+
+			h2 {
+				@include font(30, 35, $font-roboto);
+				font-weight: 300;
+				margin-bottom: 10px;
+				padding: 0 10px 0 20px;
+
+					&.theme-border {
+					border-style:solid;
+           			border-width:0 0 0 3px;
+				}
+			}
+
+			p {
+				@include font(15,21, $font-arial);
+				font-style: italic;
+			}
+
+		}
+
+		// Story Tile Styles
+		.story-indicator {
+			@include transition(bottom 0.4s ease);
+			@include font(14,18, arial);
+			font-weight: 300;
+			position: absolute;
+			bottom: 3%;
+			right: 3%;
+			padding: 6px 10px 7px;
+			z-index: 250;
+			color: #fff;
+		}
+
+		.description {
+			display: none;
+
+			@include mq($from: tablet) {
+		    	@include transition(bottom 0.4s ease);
+		    	display: block;
+				position: absolute;
+				bottom: -35%;
+				width: 100%;
+				height: 35%;
+				z-index: 260;
+				background: #fff;
+				padding: 5% 8%;
+
+				.description-inner {
+					display: table;
+					height: 100%;
+				}
+
+				p {
+					@include font(14,25, $font-roboto);
+					color: #5e5d5d;
+					display: table-cell;
+					vertical-align: middle;
+				}
+			}
+		}
+
+		// Collection Styles
+		.item-collection {
+
+			.item-bg {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 200;
+			}
+
+			.item-overlay-text {
+				background: none;
+				padding: 10%;
+
+				h2 {
+					@include font(50, 60, $font-roboto);
+					margin-bottom: 25px;
+					font-weight: 100;
+					padding-left: 0;
+				}
+
+				.collection-description {
+					display: none;
+
+					@include mq($from: tablet) {
+						@include font(15,25, $font-roboto);
+						display: block;
+						font-style: normal;
+						width: 80%;
+					}
+				}
+
+				.collection-indicator {
+					@include transition(background 0.3s ease-out);
+					@include background-transparent(#000, 0);
+					display: inline-block;
+					position: absolute;
+					bottom: 10%;
+					padding: 15px 18px;
+					color: #fff;
+					z-index: 300;
+					margin: 0 auto;
+					left: 10%;
+					border: 1px solid #fff;
+					width: auto;
+				}
+			}
+		}
+}

@@ -1,0 +1,52 @@
+/**
+ * @class css.pages.page-about
+ *
+ * Use this for default page styles that apply to all pages
+ *
+ * ## Usage
+ * Import into your main file using
+ *
+ *     @import "__pages/page-about";
+ *
+ */
+
+.page-about {
+
+	.story-block-media {
+		max-height: 500px;
+
+		.aspect-outer {
+    		background-position: 100% 50%;
+    	}
+	}
+
+	.story-block-text {
+		.text-wrap {
+			max-width: none;
+		}
+
+			h2,
+			p {
+				margin-bottom: 30px;
+			}
+
+			.small {
+				@include font(14, 18);
+			}
+
+			a {
+				text-decoration: underline;
+
+				&:hover {
+					text-decoration: none;
+				}
+			}
+
+			.video-wrap {
+				overflow: hidden;
+				margin-bottom: 40px;
+			}
+	}
+
+
+}

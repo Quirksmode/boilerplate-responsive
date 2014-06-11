@@ -1,0 +1,218 @@
+/**
+ * @class css.assets.asset-viewer
+ *
+ * Use this for default page styles that apply to all pages
+ *
+ * ## Usage
+ * Import into your main file using
+ *
+ *     @import "__assets/asset-viewer";
+ *
+ */
+
+$z-index-base: 10000 !default;
+
+
+// Asset Zoomer
+.asset-zoomer {
+  @include transition(opacity 0.4s ease-out);
+  @include opacity(0);
+
+  &.asset-zoomer-ready {
+    @include opacity(1);
+  }
+}
+
+.lhp_miv_holder {
+  img {
+    max-width: none;
+  }
+}
+
+
+/*
+* cursors
+*/
+.lhp_cursor_drag {
+  cursor: url(../img/asset-viewer/cursorDrag.png), move;
+}
+
+.lhp_cursor_hand {
+  cursor: url(../img/asset-viewer/cursorHand.png), default;
+}
+
+/*
+ * navigation
+ */
+.lhp_miv_nav {
+  position: absolute;
+  z-index: $z-index-base + 1;
+}
+
+.lhp_miv_nav_pos_BR {
+  bottom:0;
+  left:0;
+  width: 100%;
+
+  @include mq($from: tablet) {
+      right: 0;
+      left: auto;
+      width: auto;
+  }
+
+  li {
+    padding: 0 !important;
+  }
+
+
+  .ui-icon {
+    @include font(20, 20);
+    @include background-transparent(#000, .8);
+    display: inline-block;
+    color: #fff;
+    border: 1px solid #7a7a7a;
+    margin: 0;
+    position: absolute;
+    bottom: -1px;
+    padding: 6px 6px 7px;
+    height: 36px;
+    width: 13%;
+    text-align: center;
+
+    @include mq($from: tablet) {
+      width: 39px;
+    }
+
+    &:hover {
+      color: #ccc;
+    }
+
+    &:before {
+        @include anti-alias-text;
+        font-family: $font-icomoon-main;
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+    }
+  }
+
+  .ui-icon-zoomin {
+    border-left: none;
+    right: 0;
+    padding-left: 12px;
+    bottom: -2px;
+
+    @include mq($from: tablet) {
+      right: 27px;
+    }
+
+    &:before {
+      content: "\e618";
+    }
+  }
+
+  .ui-icon-zoomout {
+    border-right: none;
+    left: 0;
+    padding-right: 12px;
+
+    @include mq($from: tablet) {
+      left: auto;
+      right: 138px;
+    }
+
+    &:before {
+      content: "\e617";
+    }
+  }
+
+
+  .lhp_miv_nav_btt_disab {
+      .ui-icon {
+        color: #666;
+      }
+    }
+
+}
+
+.lhp_miv_nav ul {
+  margin:0;
+  padding:0;
+  width: 100%;
+  position: relative;
+}
+
+.lhp_miv_nav ul li {
+  position:relative;
+  padding:4px 0;
+  cursor:pointer;
+  float:left;
+  list-style:none;
+  margin-right:1px;
+  margin-bottom:1px;
+  width: 100%;
+}
+
+.lhp_miv_nav ul li span {
+  float:left;
+  margin:0 4px;
+}
+
+ul li.lhp_miv_nav_btt_disab {
+  cursor:default;
+}
+
+/*
+* map palette
+*/
+.lhp_miv_map {
+  position:absolute;
+  z-index: $z-index-base + 2;
+  bottom:35px;
+  right:27px;
+
+  visibility: hidden;
+
+  @include mq($from: tablet) {
+    visibility: visible;
+  }
+
+}
+
+.lhp_miv_map_wrapp_hol {
+  position:relative;
+  overflow: hidden;
+  border: 1px solid #7a7a7a;
+}
+
+.lhp_miv_map_vr {
+  @include background-transparent(#000, .2);
+  border: 1px solid #000;
+}
+
+.lhp_miv_map_vr_over {
+  @include background-transparent(#000, .6);
+}
+
+/*
+ * preloader
+ */
+.lhp_miv_preload_holder {
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-top:-17px;
+  margin-left:-17px;
+  z-index: $z-index-base + 3;
+  width:33px;
+  height:33px;
+  background-image: url('../img/asset-viewer/ajax-loader.gif') no-repeat center;
+  border-radius: 17px;
+}
+
+.lhp_miv_blackScreen {
+  display: none;
+}

@@ -1,0 +1,71 @@
+/**
+ * @class css.components.header.header
+ *
+ * Header Styles
+ *
+ * ## Usage
+ * Import into your main file using
+ *
+ *     @import "__components/__header/header";
+ *
+ */
+
+.section-scroller {
+	@include transition(transform 0.3s ease, background-color 0.3s ease-out, font 0.3s ease-out);
+	@include transform(translate3d(0, 0, 0));
+	@include font(20,20);
+	@include border-radius(5px, 5px, 0, 0);
+	@include opacity(0.9);
+	position: fixed;
+	bottom: 0;
+	right: 10px;
+	text-align: center;
+	padding: 10px 30px 6px;
+	background-color: #fff;
+	color: #000;
+	z-index: 2000;
+
+	@include mq($from: tablet) {
+		@include font(25,25);
+		right: 15px;
+		padding: 12px 35px 9px;
+	}
+
+	@include mq($from: smalldesktop) {
+		@include font(30,30);
+		right: 20px;
+		padding: 15px 40px 11px;
+	}
+
+	// Add the Icon Font
+	&:before {
+		@include transition(transform 0.3s ease-out);
+		content: "\e60e";
+		display: inline-block;
+	}
+
+	&:hover {
+		background-color: #ccc;
+		cursor: pointer;
+	}
+
+	&.back-to-top {
+
+		&:before {
+			@include rotate(180);
+
+		}
+
+		.lt-ie9 & {
+			filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+		}
+	}
+
+	.nav-primary-show & {
+		 @include transform(translate3d(300px, 0, 0));
+
+		 .lt-ie10 & {
+            right: -290px;
+        }
+	}
+}

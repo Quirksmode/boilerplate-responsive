@@ -1,0 +1,196 @@
+/**
+ * @class css.
+ *
+ *
+ * ## Usage
+ * Import into your main file using
+ *
+ *     @import "__";
+ *
+ */
+
+.story-block-media {
+	width: 100%;
+	overflow: hidden;
+	margin-top: 0;
+	font-size: 0; // Fix inline block whitespace
+	position: relative;
+
+	.aspect-outer {
+		.lt-ie9 & {
+			/* The url is relative to the document, not to the css file! */
+		    -ms-behavior: url(/static/js/lib/htc/backgroundsize.min.htc);
+		}
+	}
+
+	&:first-child {
+		.text-wrap {
+			max-width: 615px;
+		}
+	}
+
+
+	> img {
+		width: 100%;
+	}
+
+	.aspect,
+	.related-aspect,
+    .video-wrap, // Wrapper for video
+	.over-image-wrap {
+		display: inline-block;
+		width: 100%;
+		vertical-align: top;
+		font-size: 1em;
+	}
+
+	.over-image-wrap {
+		// Pull content over the image
+		margin: 0 0 0 -100%;
+
+		.icon-font {
+			// Media Query: From 1000px and up
+			@include mq($from: 1000px) {
+				position: absolute;
+				left: -75px;
+				top: 10px;
+			}
+
+			// Media Query: From super desktop and up
+			@include mq($from: superdesktop) {
+				@include font(70, 70);
+				left: -140px;
+				padding: 20px;
+			}
+		}
+	}
+
+	// Reset the negative margin technique
+	&.theme-bg {
+		.over-image-wrap {
+			margin: 0;
+		}
+	}
+
+	.structure-wrap {
+		&.align-bottom {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+		}
+	}
+
+		.icon-font {
+			@include font(40, 40);
+			padding: 10px;
+			color: #fff;
+			text-align: center;
+		}
+
+		.text-wrap {
+			position: relative;
+			margin: 50px 0 100px;
+			max-width: 380px;
+			width: 85%;
+
+			.icon-font {
+				display: inline-block;
+				margin-bottom: 20px;
+			}
+
+			h1 {
+				@include font(35, 39);
+			    color: #fff;
+			    padding-left: 25px;
+			    margin-left: -32px;
+			    //margin-bottom: 9.7%; // 60px
+			    margin-bottom: percentage(60px / 615px);
+			    border-style:solid;
+				border-width:0 0 0 5px;
+
+			    @include mq($from: tablet) {
+			       @include font(45, 49);
+			    }
+
+			    @include mq($from: smalldesktop) {
+			       @include font(55, 59);
+			    }
+
+			    @include mq($from: desktop) {
+			       @include font(65, 69);
+			    }
+			}
+
+			h2 {
+				@include font(36, 40, $font-roboto);
+				font-weight: 300;
+			    color: #fff;
+			    //margin-bottom: 8.3%; // 50px
+			    margin-bottom: percentage(50px / 380px);
+			}
+
+			p {
+				@include font(18, 31, $font-merriweather);
+				font-weight: 300;
+				color: #fff;
+				//margin-bottom: 8.3%; // 50px
+				margin-bottom: percentage(50px / 380px);
+
+				@include mq($from: tablet) {
+			       @include font(19, 32);
+			    }
+
+			    @include mq($from: smalldesktop) {
+			      @include font(20, 33);
+			    }
+			}
+
+			blockquote {
+				border: 1px solid #959595;
+				border-style: solid none;
+				padding: 18px 0;
+
+				.quote,
+				.author {
+					color: #fff;
+					margin-bottom: 0;
+				}
+
+				.quote {
+					@include font(22,30, $font-merriweather);
+					font-weight: 300;
+					margin: 0;
+				}
+
+		        .author {
+		        	@include font(16, 20, $font-roboto);
+		        	margin: 20px 0 0 0;
+		        }
+			}
+		}
+
+		.next-arrow {
+			@include transition(border 0.3s ease-out);
+			display: block;
+			max-width: 380px;
+			text-align: center;
+			border-top: 1px solid #fff;
+			padding: 5px 0;
+			outline: none;
+
+			span {
+				@include transition(color 0.3s ease-out);
+			}
+
+			&:hover {
+				text-decoration: none;
+				border-top: 1px solid #999;
+
+				span {
+					color: #999;
+				}
+			}
+		}
+
+}

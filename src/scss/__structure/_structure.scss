@@ -1,0 +1,74 @@
+/**
+ * @class css.structure.structure
+ *
+ * These styles define the main site structure, at the lowest breakpoint everything is set to be 1 column and width 100%.
+ *
+ * ## Usage
+ * Import into your main file using
+ *
+ *     @import "__structure/structure";
+ *
+ */
+
+.header,
+.main-inner-wrap,
+.story,
+.story-block,
+.structure-wrap {
+	@extend .cf;
+}
+
+.main-wrap {
+	width: 100%;
+	overflow-x: hidden;
+}
+
+.main-inner-wrap {
+	width: 100%;
+	position: relative;
+	z-index: 900;
+}
+
+
+.main-wrap,
+.header {
+	min-width: 320px;
+
+	.lt-ie9 & {
+		min-width: 1024px;
+	}
+}
+
+.structure-wrap {
+	margin-left: 1.2%;
+	position: relative;
+
+	// This adds the responsive gutters
+	width: 97.6%; // 12px gutters 24 / 1000 * 100 / 1
+
+	//max-width: 1920px;
+	//max-width: 1280px;
+	max-width: 2500px;
+
+	.lt-ie9 & {
+		min-width: 1024px;
+		max-width: 1500px;
+	}
+
+	.story-block &,
+	.related-items &,
+	.asset & {
+		max-width: 1280px;
+		width: 85%;
+		margin: 0 auto;
+
+		.lt-ie9 & {
+			padding-left: 1.2%;
+			padding-right: 1.2%;
+		}
+	}
+}
+
+.jigsaw-wrap {
+	position: relative;
+}

@@ -1,0 +1,76 @@
+/**
+ * @class css.mixins.animations
+ *
+ * Here we define the reusable helper mixins
+ *
+ * ## Usage
+ * Import into your main file using
+ *
+ *     @import "__mixins/_animations.scss";
+ */
+
+/**
+ * Font
+ * @param {Number/String} delay
+ * @param {Number/String} duration
+ * @param {String} animation
+ * Usage:
+ *     @include animation(changecolour, 5s, linear, 0, infinite, normal, running);
+ *
+ */
+@mixin animation ($animation, $duration, $timing: ease, $delay: 0, $iteration: initial, $direction: normal, $playstate: running, $fillmode: forwards) {
+    -webkit-animation-name: $animation;
+    -webkit-animation-duration: $duration;
+    -webkit-animation-timing-function: $timing;
+    -webkit-animation-delay: $delay;
+    -webkit-animation-iteration-count: $iteration;
+    -webkit-animation-direction: $direction;
+    -webkit-animation-play-state: $playstate;
+    -webkit-animation-fill-mode: $fillmode;
+
+    -moz-animation-name: $animation;
+    -moz-animation-duration: $duration;
+    -moz-animation-timing-function: $timing;
+    -moz-animation-delay: $delay;
+    -moz-animation-iteration-count: $iteration;
+    -moz-animation-direction: $direction;
+    -moz-animation-play-state: $playstate;
+    -moz-animation-fill-mode: $fillmode;
+
+    -o-animation-name: $animation;
+    -o-animation-duration: $duration;
+    -o-animation-timing-function: $timing;
+    -o-animation-delay: $delay;
+    -o-animation-iteration-count: $iteration;
+    -o-animation-direction: $direction;
+    -o-animation-play-state: $playstate;
+    -o-animation-fill-mode: $fillmode;
+
+    animation-name: $animation;
+    animation-duration: $duration;
+    animation-timing-function: $timing;
+    animation-delay: $delay;
+    animation-iteration-count: $iteration;
+    animation-direction: $direction;
+    animation-play-state: $playstate;
+    animation-fill-mode: $fillmode;
+}
+
+
+@mixin keyframe ($animation_name) {
+    @-webkit-keyframes $animation_name {
+        @content;
+    }
+
+    @-moz-keyframes $animation_name {
+        @content;
+    }
+
+    @-o-keyframes $animation_name {
+        @content;
+    }
+
+    @keyframes $animation_name {
+        @content;
+    }
+}

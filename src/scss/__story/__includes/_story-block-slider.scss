@@ -1,0 +1,342 @@
+/**
+ * @class css.
+ *
+ *
+ * ## Usage
+ * Import into your main file using
+ *
+ *     @import "__";
+ *
+ */
+
+.story-block-slider {
+	background: #fff;
+	position: relative;
+
+	.slider {
+		position: relative;
+
+		.slides > li {
+			display: none;
+			-webkit-backface-visibility: hidden;
+			position: relative;
+
+			.no-js & {
+				display: block;
+			}
+		} /* Hide the slides before the JS is loaded. Avoids image jumping */
+
+		/* No JavaScript Fallback */
+		.slides > li:first-child {
+			.no-js & {
+				display: block;
+			}
+		}
+
+		.slides {
+			display: block;
+
+			img {
+				width: 100%;
+				display: block;
+			}
+			&:after {
+				display: block;
+				clear: both;
+				visibility: hidden;
+				line-height: 0;
+				height: 0;
+			}
+		}
+	}
+
+	/* Direction Nav */
+	.flex-direction-nav {
+		li {
+			position: absolute;
+			top: 55%;
+			margin-top: -60px;
+			z-index: 10;
+			overflow: hidden;
+			cursor: pointer;
+			right: 0;
+
+			&:first-child {
+				right: auto;
+				left: 0;
+			}
+
+			a  {
+				@include transition(background 0.3s ease-out);
+				@include background-transparent(#000, .7);
+				@include border-radius(0, 8px, 8px, 0);
+				padding: 20px 8px 20px 5px;
+				display: block;
+				color: #fff;
+
+				&:hover {
+					@include background-transparent(#000, 1);
+					text-decoration: none;
+				}
+
+				&:before  {
+					@include anti-alias-text;
+					@include font(20, 20, $font-icomoon-main);
+				    speak: none;
+				    font-style: normal;
+				    font-weight: normal;
+				    font-variant: normal;
+				    text-transform: none;
+				    line-height: 1;
+				    content: "\e606";
+					display: inline-block;
+				}
+
+				&.flex-next {
+					@include border-radius(8px, 0, 0, 8px);
+					padding: 20px 5px 20px 8px;
+
+					&:before {
+						content: "\e605";
+					}
+				}
+			}
+
+			@include mq($from: smalldesktop) {
+				margin-top: -50px;
+				a  {
+					padding: 30px 8px 30px 5px;
+
+					&:before  {
+						@include font(30, 30);
+					}
+
+					&.flex-next {
+						padding: 30px 5px 30px 8px;
+					}
+				}
+			}
+
+			@include mq($from: desktop) {
+				a  {
+					padding: 40px 8px 40px 5px;
+
+					&:before  {
+						@include font(30, 30);
+					}
+
+					&.flex-next {
+						padding: 40px 5px 40px 8px;
+					}
+				}
+			}
+
+		}
+
+	}
+
+
+	.flex-control-nav {
+		display: none;
+	}
+
+	@include mq($from: tablet) {
+
+		/* Control Nav */
+		.flex-control-nav {
+			@include background-transparent(#000, .5);
+			display: block;
+			padding: 15px 10px 8px;
+			width: 100%;
+			text-align: center;
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin: 0 auto;
+
+			li {
+				display: inline-block;
+			    padding: 2px 6px;
+
+				a {
+					@include border-radius(20px, 20px, 20px, 20px);
+					width: 13px;
+					height: 13px;
+					display: block;
+					background: #fff;
+					cursor: pointer;
+					text-indent: -9999px;
+
+					&:hover {
+						background: #e06e00;
+					}
+
+					&.flex-active {
+						background: #e06e00;
+						cursor: default;
+					}
+				}
+			}
+		}
+
+	}
+
+
+	.view-asset {
+		-webkit-backface-visibility: hidden;
+
+		@include mq($from: smalldesktop) {
+			@include font(35, 10);
+			@include border-radius(8px, 0, 0, 8px);
+			margin-top: 25px;
+		}
+
+		@include mq($from: desktop) {
+			@include font(45, 10);
+			margin-top:40px;
+		}
+
+	}
+
+
+
+
+
+
+
+	// Slider navigation buttons
+	.slider-bottom-wrap {
+		position: absolute;
+		width: 100%;
+		margin: 0 auto;
+		text-align: center;
+		z-index: 500;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		max-width: none;
+
+		.slider-nav-wrap {
+			display: none;
+
+			@include mq($from: tablet) {
+
+				@include background-transparent(#000, .7);
+				@include border-radius(10px, 10px, 0, 0);
+				position: relative;
+				margin: 0 auto;
+				display: inline-block;
+				padding: 15px 15px 8px;
+
+				.slider-nav {
+					list-style-type: none;
+
+					li {
+						display: inline-block;
+					    padding: 2px 6px;
+
+						a {
+							@include border-radius(20px, 20px, 20px, 20px);
+							width: 13px;
+							height: 13px;
+							display: block;
+							background: #fff;
+							cursor: pointer;
+							text-indent: -9999px;
+
+							&:hover {
+								background: #e06e00;
+							}
+
+							&.flex-active {
+								background: #e06e00;
+								cursor: default;
+							}
+						}
+
+					}
+				}
+
+			}
+
+		}
+
+	}
+
+
+
+
+	// Heading styles
+	.caption-wrap {
+		background: #fff;
+
+		h3 {
+			@extend .caption;
+			-webkit-backface-visibility: hidden;
+			background: #fff;
+			margin: 15px 0;
+		}
+
+		@include mq($from: tablet) {
+			background: none;
+
+			.structure-wrap {
+				position: static;
+			}
+
+			h3 {
+				@include font(25, 29, $font-roboto);
+				background: none;
+				margin: 0;
+				font-weight: 300;
+			    color: #fff;
+				position: absolute;
+				z-index: 1000;
+				margin-top: 30px;
+				left: 30px;
+				border-style:solid;
+				border-width:0 0 0 2px;
+				padding-left: 10px;
+				width: 70%;
+				top: 0;
+			}
+		}
+
+		@include mq($from: smalldesktop) {
+			h3 {
+				@include font(30, 34, $font-roboto);
+				margin-top: 40px;
+				left: 50px;
+				border-width:0 0 0 3px;
+				padding-left: 20px;
+			}
+		}
+
+		@include mq($from: desktop) {
+			h3 {
+				margin-top: 50px;
+			}
+		}
+
+	}
+
+
+}
+
+// IE Doesn't support the background fix for the sliders
+.lt-ie9 {
+	.story-block-slider {
+		.aspect-outer {
+			background: none;
+
+			.aspect {
+				padding-top: 0 !important;
+
+				img {
+					display: block !important;
+				}
+			}
+		}
+	}
+}

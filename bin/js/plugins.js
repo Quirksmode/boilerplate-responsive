@@ -1,0 +1,1 @@
+!function(){for(var e,n=function(){},o=["assert","clear","count","debug","dir","dirxml","error","exception","group","groupCollapsed","groupEnd","info","log","markTimeline","profile","profileEnd","table","time","timeEnd","timeStamp","trace","warn"],r=o.length,i=window.console=window.console||{};r--;)e=o[r],i[e]||(i[e]=n)}(),$.fn.doesExist=function(){return $(this).length>0};

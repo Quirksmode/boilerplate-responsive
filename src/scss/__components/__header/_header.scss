@@ -1,0 +1,111 @@
+/**
+ * @class css.components.header.header
+ *
+ * Header Styles
+ *
+ * ## Usage
+ * Import into your main file using
+ *
+ *     @import "__components/__header/header";
+ *
+ */
+
+.header {
+	@include box-shadow(0, 2px, 5px, rgba(0, 0, 0, 0.3));
+	position: fixed;
+	top: 0;
+	width: 100%;
+	background-color: #fff;
+	height: 66px;
+	z-index: 15000;
+
+	.no-js & {
+		padding: 0 20px;
+		position: relative;
+	}
+
+	.icon-main {
+		@include font(30,30);
+		@include transition(color 0.3s ease-out);
+		color: #999;
+		float: left;
+		padding: 17px 20px 10px 20px;
+		outline: 0;
+
+		&:hover {
+			color: #000;
+			text-decoration: none;
+			cursor: pointer;
+		}
+
+		&.menu-btn-toggle {
+			margin-right: 10px;
+		}
+
+		&.social-btn-toggle {
+			float: right;
+			padding-left: 10px;
+		}
+
+		// Hide these buttons when JS is turned off
+		.no-js & {
+			display: none;
+		}
+	}
+
+	.logo-main {
+		float: left;
+		margin: 0 0 5px 0;
+		max-width: 174px;
+
+		.social-links-show & {
+			display: none;
+		}
+
+		@include mq($from: tablet) {
+			margin-right: 30px;
+
+			.social-links-show & {
+				display: block;
+			}
+		}
+	}
+
+	.strapline {
+		display: none;
+
+		@include mq($from: tablet) {
+			@include font(22, 26, $font-roboto);
+			float: left;
+			color: #555;
+			margin-top: 18px;
+			font-weight: 300;
+			display: block;
+
+			.social-links-show & {
+				display: none;
+			}
+		}
+
+		@include mq($from: 650px) {
+			.social-links-show & {
+				display: block;
+			}
+		}
+	}
+
+
+	// Closed Toggle States for Icons
+	.social-btn-toggle:before {
+		.social-links-show & {
+			content: "\e60f";
+		}
+	}
+
+    .menu-btn-close:before {
+        .nav-primary-show & {
+            content: "\e60f";
+        }
+    }
+
+}

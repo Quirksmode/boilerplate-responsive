@@ -1,0 +1,35 @@
+/**
+ * @class css.components.header.header
+ *
+ * Header Styles
+ *
+ * ## Usage
+ * Import into your main file using
+ *
+ *     @import "__components/__header/header";
+ *
+ */
+
+.ps-container {
+	.ps-scrollbar-y-rail {
+	    position: absolute; /* please don't change 'position' */
+	    right: 0; /* there must be 'right' for ps-scrollbar-y-rail */
+	    width: 6px;
+	    background-color: #d6d6d6;
+
+	    .nav-primary & {
+	    	background-color: #494848;
+	    }
+	}
+
+	.ps-scrollbar-y {
+	    position: absolute; /* please don't change 'position' */
+	    right: 0; /* there must be 'right' for ps-scrollbar-y */
+	    width: 6px;
+	    background-color: #908e8b;
+
+	    .nav-primary & {
+	    	background-color: #908e8b;
+	    }
+	}
+}

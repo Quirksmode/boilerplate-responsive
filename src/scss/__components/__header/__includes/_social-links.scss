@@ -1,0 +1,110 @@
+/**
+ * @class css.components.header.social-links
+ *
+ * Header Styles
+ *
+ * ## Usage
+ * Import into your main file using
+ *
+ *     @import "__components/__header/__includes/social-links";
+ *
+ */
+
+ .header {
+ 	.social-links {
+		@include opacity(0);
+		visibility: hidden;
+		float: right;
+
+		.lt-ie9 & {
+			@include opacity(100);
+			visibility: visible;
+			position: relative;
+			top: -200px;
+		}
+
+		.social-links-show & {
+			// Update the transition delay to 0
+	        @include css3(transition-delay, 0s);
+	        @include opacity(1);
+	        visibility: visible;
+
+	        .lt-ie9 & {
+				top: 0;
+			}
+		}
+
+		@include mq($from: smalldesktop) {
+			@include transition(opacity 0.4s ease, visibility 0s linear 0.4s);
+		}
+ 	}
+ }
+
+.social-links {
+	list-style-type: none;
+	margin-top: 12px;
+
+	.no-js & {
+		display: none;
+	}
+
+	li {
+		@include transition(background-color 0.4s ease-out);
+		float: left;
+		margin-right: 5px;
+
+		&.icon-main-facebook {
+			background-color: $color-social-facebook;
+
+			&:hover {
+				background-color: $color-social-facebook-hover;
+			}
+		}
+
+		&.icon-main-twitter {
+			background-color: $color-social-twitter;
+
+			&:hover {
+				background-color: $color-social-twitter-hover;
+			}
+		}
+
+		&.icon-main-google {
+			background-color: $color-social-google;
+
+			&:hover {
+				background-color: $color-social-google-hover;
+			}
+		}
+
+		&.icon-main-contact {
+			background-color: $color-social-contact;
+
+			&:hover {
+				background-color: $color-social-contact-hover;
+			}
+		}
+
+		&.icon-main-pinterest {
+			background-color: $color-social-pinterest;
+
+			&:hover {
+				background-color: $color-social-pinterest-hover;
+			}
+		}
+
+		a {
+			@include font(35,35);
+			@include transition(color 0.3s ease-out);
+			color: #fff;
+			padding: 2px 3px 2px 5px;
+			cursor: pointer;
+			outline: 0;
+			display: inline-block;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+}

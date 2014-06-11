@@ -1,0 +1,231 @@
+/**
+ * @class css.story.includes.story-block-showhide
+ *
+ *
+ * ## Usage
+ * Import into your imports file using
+ *
+ *     @import "__story/__includes/story-block-showhide";
+ *
+ */
+
+.story-block-before-after {
+
+	.before-and-after {
+		@extend .cf;
+		@include transition(opacity 0.3s ease-out);
+		@include opacity(0);
+		position: relative;
+		display: block;
+		height: 100%;
+
+		&:hover {
+			.drag-area {
+				@include opacity(0);
+			}
+		}
+
+		&.loaded {
+			@include opacity(1);
+		}
+
+		img {
+			max-width: none;
+		}
+
+		.top-image {
+			width: 100%;
+		}
+
+		.top-image,
+		.before-and-after-slider,
+		.drag-area,
+		.slider-button {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		.before-and-after-slider {
+			@include transform(translate3d(0, 0, 0));
+			-webkit-backface-visibility: hidden;
+			width: 50%;
+			overflow: hidden;
+		}
+
+		.drag-area {
+			@include opacity(0.5);
+			@include transition(opacity 0.3s ease-out);
+			width: 100%;
+			height: 100%;
+			z-index: 6;
+			background-color: #000000;
+		}
+
+		.slider-button {
+			@include transition(transform 0.3s ease-out);
+			cursor: col-resize;
+		    background-color: $color-orange;
+		    background-size: cover;
+		    height: 50px;
+		    left: 50%;
+		    margin: -25px 0 0 -25px;
+		    top: 50%;
+		    width: 50px;
+		    z-index: 11;
+
+		    .touch & {
+				@include transform(none);
+			}
+
+			&:hover {
+				@include transform(scale(1.1));
+			}
+
+			.theme-bg {
+				display: table;
+				width: 100%;
+				height: 100%;
+			}
+
+			.slider-button-hotspot {
+				@include opacity(0);
+				background-color: #fff;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 100;
+			}
+
+			span {
+				@include font(22, 10);
+				color: #fff;
+				display: table-cell;
+				vertical-align: middle;
+				text-align: center;
+			}
+
+		    @include mq($from: smalldesktop) {
+		    	height: 76px;
+			    margin: -38px 0 0 -38px;
+			    width: 76px;
+
+			    span {
+			    	@include font(40, 10);
+			    }
+		    }
+
+		    @include mq($from: largedesktop) {
+		    	height: 100px;
+			    margin: -50px 0 0 -50px;
+			    width: 100px;
+
+			    span {
+			    	@include font(50, 10);
+			    }
+		    }
+		}
+
+		.slider-copy {
+			@include transition(opacity 0.3s ease-out);
+			@include opacity(1);
+		    bottom: 0;
+		    display: table-cell;
+		    height: 100%;
+		    left: 0;
+		    pointer-events: none;
+		    position: absolute;
+		    right: 0;
+		    top: 0;
+		    width: 50%;
+		    z-index: 5;
+
+		    &.hide {
+				@include opacity(0);
+			}
+
+		    p {
+		    	@include font(18, 22, $font-roboto);
+				font-weight: normal;
+				text-shadow: 1px 1px 2px #666;
+				color:#fff;
+		    }
+
+		    @include mq($from: tablet) {
+		    	p {
+		    		@include font(22, 26);
+		    	}
+		    }
+
+		    @include mq($from: smalldesktop) {
+		    	p {
+		    		@include font(25, 29);
+		    	}
+		    }
+
+		    @include mq($from: desktop) {
+		    	p {
+		    		@include font(32, 38);
+		    	}
+
+		    }
+		}
+
+		.copy-1 {
+			text-align: right;
+			padding: 5% 10% 5% 0;
+		}
+
+		.copy-2 {
+			text-align: left;
+			left: 50%;
+			padding: 5% 0 5% 10%;
+		}
+
+
+		@include mq($from: tablet) {
+			.copy-1 {
+				padding-right: 7%;
+			}
+
+			.copy-2 {
+				padding-left: 7%;
+			}
+		}
+
+		@include mq($from: largedesktop) {
+			.copy-1 {
+				padding-right: 6%;
+			}
+
+			.copy-2 {
+				padding-left: 6%;
+			}
+		}
+
+		.table {
+			display: table;
+			width: 100%;
+			height: 100%;
+		}
+
+		.table-cell {
+			display: table-cell;
+			vertical-align: middle;
+		}
+
+		.user-select-none {
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+
+	}
+}

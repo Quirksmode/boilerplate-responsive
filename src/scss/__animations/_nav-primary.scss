@@ -1,0 +1,125 @@
+/**
+ * @class css.components.header.nav
+ *
+ * Header Styles
+ *
+ * ## Usage
+ * Import into your main file using
+ *
+ *     @import "__animations/nav-primary";
+ *
+ */
+
+// Animation Styles, have moved them here for clarity
+.nav-primary {
+    @include transition(transform 0.5s ease-out, visibility 0s linear 0.8s);
+    @include transform(translate3d(-300px, 0, 0));
+    -webkit-backface-visibility: hidden;
+    visibility: hidden;
+
+
+    .nav-primary-show & {
+        @include css3(transition-delay, 0s);
+        visibility: visible;
+        @include transform(translate3d(0, 0, 0));
+    }
+}
+
+.lt-ie10 .nav-primary {
+    visibility: visible;
+    left: -300px;
+}
+
+.lt-ie10 .nav-primary-show .nav-primary {
+    left: 0;
+}
+
+.mfp-wrap,
+.main-inner-wrap {
+    @include transition(transform 0.5s ease-out);
+    @include transform(translate3d(0, 0, 0));
+    -webkit-backface-visibility: hidden;
+
+    .nav-primary-show & {
+        @include transform(translate3d(300px, 0, 0));
+        @include box-shadow(-2px, 0, 5px, rgba(0, 0, 0, 0.3));
+
+        .lt-ie10 & {
+            left: 300px;
+        }
+    }
+}
+
+
+
+
+// NoJS Styles
+.no-js {
+    .nav-primary {
+        @include transform(none);
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        visibility: visible;
+        z-index: 999;
+    }
+}
+
+
+
+
+
+
+// Primary Nav Inner
+.nav-primary {
+    .level-wrap {
+        @include transition(transform 0.4s ease-out);
+        @include transform(translate3d(0, 0, 0));
+        -webkit-backface-visibility: hidden;
+
+        .level-wrap-show & {
+            @include transform(translate3d(-300px, 0, 0));
+        }
+    }
+}
+
+.lt-ie10 .nav-primary .level-wrap {
+    visibility: visible;
+    left: 0;
+}
+
+.lt-ie10 .level-wrap-show .nav-primary .level-wrap {
+    left: -300px;
+}
+
+
+
+
+// Fix webkit flicker bug, bad webkit, goto your room, no nintendo!!
+.story-block,
+.related-items {
+    -webkit-backface-visibility: hidden;
+    @include transform(translate3d(0, 0, 0));
+}
+
+.structure-wrap {
+    //@include transform(translate3d(0, 0, 0));
+    //-webkit-transform-style: preserve-3d;
+}
+
+// .block-wrap {
+//     .item,
+//     .item-overlay-wrap,
+//     .rollover,
+//     .item-desc,
+//     .item-icon,
+//     .collection-indicator {
+//        -webkit-transform-style: preserve-3d;
+
+//        .no-touch & {
+//             -webkit-backface-visibility: hidden;
+//        }
+//     }
+// }
+

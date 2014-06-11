@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--[if IE 7]>         <html class="no-js lt-ie10 lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <title>Sainsbury's Mobile Prototype | Modular Grids</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1" />
+
+        <!-- General -->
+        <meta name="description" content="" />
+
+        <!-- Facebook -->
+        <meta property="og:title" content="" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="../bin/img/share/logo.jpg" />
+        <meta property="og:url" content="" />
+        <meta property="og:site_name" content="" />
+        <meta property="og:description" content="" />
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="" />
+        <meta name="twitter:description" content="" />
+        <meta name="twitter:image" content="" />
+        <meta name="twitter:image" content="" />
+
+        <!-- Win8 Tile -->
+        <meta name="msapplication-TileImage" content=""/>
+        <meta name="msapplication-TileColor" content="#ed8b00"/>
+
+        <!-- Apple Touch Icons -->
+        <link rel="apple-touch-icon-precomposed" href="../bin/img/favicon/apple-touch-icon-precomposed.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../bin/img/favicon/apple-touch-icon-57x57-precomposed.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../bin/img/favicon/apple-touch-icon-72x72-precomposed.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../bin/img/favicon/apple-touch-icon-114x114-precomposed.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../bin/img/favicon/apple-touch-icon-144x144-precomposed.png" />
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="../bin/img/favicon/favicon.ico" />
+
+        <!-- Custom Fonts -->
+        <link href='//fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Merriweather:400,300' rel='stylesheet' type='text/css'>
+
+
+
+
+        <!--[if (gt IE 8) | (IEMobile)]><!-->
+            <link href="../bin/css/styles.css" rel="stylesheet" type="text/css" />
+        <!--<![endif]-->
+        <!--[if (lt IE 9) & (!IEMobile)]>
+            <link rel='stylesheet' id='ie-only-css' href='bin/css/ie.css' />
+        <![endif]-->
+        <!--[if lt IE 9]>
+            <script src="bin/js/lib/html5shiv.js"></script>
+        <![endif]-->
+        <script src="../bin/js/lib/modernizr.dev.js"></script>
+    </head>
+    <body>
+        <noscript>
+            <div class="no-script">
+                <p>For full functionality of this site it is necessary to enable JavaScript.</p>
+                <p>Here are the <a href="http://www.enable-javascript.com/" target="_blank"> instructions how to enable JavaScript in your web browser</a>.</p>
+            </div>
+        </noscript>
+
+        <!--[if lt IE 8]>
+            <div class="no-browser">
+                <p>Sorry, we don't look so hot in this browser. If you want to see us at our very best then how about upgrading? We're worth it…</p>
+                <p>Here are the instructions <a href="http://whatbrowser.org/" target="_blank" data-track="header|click|browser">how to upgrade your web browser</a>.</p>
+                <p>If you're using Internet Explorer, 'compatibility mode' can also affect the way this site looks.</p>
+                <p>Please follow these instructions <a href="http://windows.microsoft.com/en-GB/internet-explorer/products/ie-9/features/compatibility-view" target="_blank" data-track="header|click|compatibility">how to switch compatibility mode off</a>.</p>
+            </div>
+        <![endif]-->
+
+        {% include 'components/top-bar.html' %}
+        {% include 'components/header-primary.html' %}
+
+        {% block main_content %}{% endblock %}
+
+
+        <footer class="footer"></footer>
+
+        <script data-main="../../src/js/common" src="../../src/js/lib/require.js"></script>
+        <script>require(['app/main']);</script>
+
+        <!--[if (lt IE 9) & (!IEMobile)]>
+            <script src="bin/js/lte-ie8.js"></script>
+        <![endif]-->
+
+    </body>
+</html>

@@ -1,0 +1,1 @@
+require(["common"],function(){"use strict";require(["detectFlexslider","detectMixitup"])});

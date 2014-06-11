@@ -1,0 +1,370 @@
+/**
+ * @class css.assets.asset
+ *
+ * Use this for default page styles that apply to all pages
+ *
+ * ## Usage
+ * Import into your main file using
+ *
+ *     @import "__assets/asset";
+ *
+ */
+
+
+// Ajax Assets
+.mfp-content {
+
+	.ajax-asset {
+		@extend .cf;
+		width: 100%;
+  		height: 100%;
+		margin: 0 auto;
+		padding: 20px 20px 80px;
+
+		.structure-wrap {
+			max-width: none;
+			width: 97.6%;
+			position: relative;
+		}
+
+		section {
+			display: none;
+		}
+
+		.asset-wrap {
+			margin: 20px 0;
+		}
+
+		.heading-wrap {
+			margin-bottom: 20px;
+
+			h1 {
+				@include font(30, 34, $font-roboto);
+				color: #fff;
+				padding: 0 47px 0 0;
+				margin: 0 0 10px;
+				width: 97%
+			}
+
+			.year {
+				@include font(18, 22, $font-roboto);
+				color: #fff;
+			}
+		}
+
+		img {
+			margin: 0 auto;
+		}
+		.asset-zoomer {
+			display: none;
+		}
+
+		.asset-viewer {
+			width: 100%;
+			height: 100%;
+			margin-bottom: 30px;
+
+			.asset-viewer-inner {
+				width: 100%;
+				height: 100%;
+			}
+		}
+
+		.asset-viewer-heading {
+			width: 100%;
+			.asset-viewer-heading-inner {
+				// @include transition(padding 0.4s ease-out);
+				width: 100%;
+			}
+		}
+
+
+		.toggle-desc {
+			display: none;
+		}
+
+		.asset-desc {
+			width: 100%;
+
+			.vscroll-wrap {
+				border-radius: 6px;
+				background: #ededed;
+				padding: 20px 10px 20px 20px;
+			}
+
+		}
+
+		.toggle-desc-wrap {
+			width: 100%;
+		}
+
+
+
+		.social-links {
+			margin: 20px 0;
+		}
+
+		@include mq($from: smalldesktop) {
+
+			// Prevent scrolling for image assets
+			.asset-image & {
+				overflow: hidden;
+			}
+
+			.img-mobile {
+				display: none;
+			}
+
+			.asset-zoomer {
+				display: block;
+			}
+
+			.social-links {
+				position: absolute;
+				bottom: 20px;
+				left: 20px;
+				margin-bottom: 0;
+
+				.lt-ie9 & {
+					position: fixed;
+				}
+			}
+
+			.heading-wrap {
+				margin-bottom: 30px;
+
+				h1 {
+					@include font(36, 40, $font-roboto);
+					padding: 0 67px 0 0;
+					margin: 0 0 10px;
+				}
+
+				.year {
+					@include font(24, 28, $font-roboto);
+				}
+			}
+
+			.asset-viewer {
+				float: right;
+				margin: 0;
+				width: 100%;
+			}
+
+			.asset-viewer-heading {
+				float: right;
+				margin: 0;
+				width: 100%;
+				margin-left: -137px;
+
+				.asset-viewer-heading-inner {
+					padding-left: 137px;
+				}
+			}
+
+			.asset-desc {
+				display: none;
+				float: left;
+				width: 137px;
+				height: 80%;
+
+				.vscroll-wrap {
+					position: relative;
+					display: none;
+					border-radius: 8px;
+					background: #ededed;
+					padding: 20px 10px 45px 20px;
+					height: 85%;
+
+					.vscroll {
+						height: 100%;
+						position:relative;
+						padding:0 35px 0 0;
+						width: 100%;
+						overflow: hidden;
+					}
+
+				}
+
+				.copyright {
+					position: absolute;
+					bottom: 15px;
+					margin-bottom: 0;
+				}
+
+			}
+
+			.toggle-desc-wrap {
+				float: left;
+				width: 137px;
+
+
+				.toggle-desc {
+					@include transition(background 0.4s ease);
+					@include font(14, 18, $font-roboto);
+					display: inline-block;
+					background: #fff;
+					padding: 8px 15px 9px;
+					margin: 5px 0 20px;
+					color: #020202;
+					border-radius: 4px;
+					position: relative;
+					font-weight: 300;
+
+					// Creates the triangle indicator - Left in for now
+					// &:after {
+					// 	@include transition(border 0.4s ease);
+					// 	content: ' ';
+					// 	height: 0;
+					// 	position: absolute;
+					// 	width: 0;
+					// 	border-left: 6px solid transparent;
+					// 	border-right: 6px solid transparent;
+					// 	border-top: 7px solid #fff;
+					// 	font-size: 0;
+					// 	line-height: 0;
+					// 	bottom: -7px;
+					// 	left: 0;
+					// 	right: 0;
+					// 	margin: 0 auto;
+					// }
+
+					&:hover {
+						background: #ddd;
+						text-decoration: none;
+
+						// &:after {
+						// 	border-top: 7px solid #ddd;
+						// }
+					}
+				}
+			}
+
+			// When the description is toggled open
+			&.desc-open {
+
+				display: block;
+
+				.asset-viewer,
+				.asset-viewer-heading {
+					margin-left: -365px;
+
+					.asset-viewer-inner,
+					.asset-viewer-heading-inner {
+						padding-left: 410px;
+					}
+				}
+
+				.toggle-desc-wrap {
+					width: 365px;
+				}
+
+				.asset-desc {
+					display: block;
+					width: 365px;
+
+					.vscroll-wrap {
+						display: block;
+					}
+
+				}
+			}
+
+		}
+
+	}
+
+}
+
+
+// Non Ajax Assets
+.non-ajax-asset {
+
+	padding-bottom: 40px;
+
+	.asset-wrap {
+		position: relative;
+		margin-bottom: 40px;
+
+		img {
+			width: 100%;
+		}
+
+		img,
+		iframe {
+			border: 20px solid #fff;
+		}
+
+		.view-asset {
+			@include font(35, 35);
+			padding: 10px;
+			position: absolute;
+			color: #fff;
+			z-index: 300;
+			text-align: center;
+			background-color: $color-putty;
+			outline: none;
+			top: 20px;
+			right: 20px;
+
+			&:hover {
+				text-decoration: none;
+				color: #ccc;
+			}
+
+		}
+	}
+
+	.no-js & {
+		.ajax {
+			display: none;
+		}
+	}
+
+}
+
+
+// Shared Styles between Ajax and Non Ajax Assets
+.asset-desc {
+	h2 {
+		@include font(16, 20, $font-roboto);
+		font-weight: 400;
+		color: $colour-story-body;
+		padding-bottom: 15px;
+		margin-bottom: 22px;
+		border-bottom: 1px solid #5e5e5e;
+	}
+
+	p {
+		@include font(14, 20, $font-roboto);
+		font-weight: 300;
+		color: $colour-story-body;
+		margin-bottom: 30px;
+	}
+
+	.tags {
+		span {
+			display: inline-block;
+			margin-right: 10px;
+		}
+	}
+
+	.featured-in {
+		margin: -20px 0 20px;
+		list-style-type: none;
+
+		li {
+			border-bottom: 1px solid #d0d0d0;
+			padding: 5px 0 5px 5px;
+
+			a {
+				font-weight: 300;
+				color: $colour-story-body;
+				display: inline-block;
+				border-style: solid;
+				border-width: 0 0 0 5px;
+				padding: 15px 0 15px 20px;
+			}
+		}
+	}
+
+}

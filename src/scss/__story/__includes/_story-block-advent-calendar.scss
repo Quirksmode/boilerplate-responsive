@@ -1,0 +1,593 @@
+/**
+ * @class css.story.includes.story-block-advent-calendar
+ *
+ *
+ * ## Usage
+ * Import into your imports file using
+ *
+ *     @import "__story/__includes/story-block-advent-calendar";
+ *
+ */
+
+@import "compass";
+
+$base-font-size: 14px;
+
+
+@function calc-em($target-px, $context) {
+  @return ($target-px / $context) * 1em;
+}
+
+
+// Fonts
+.frederick {
+	font-family: 'Fredericka the Great', cursive;
+}
+.merriweather {
+	font-family: 'Merriweather', serif;
+	font-weight: 400;
+}
+.lobster {
+	font-family: 'Lobster', serif;
+}
+
+.no-overflow {
+	overflow: hidden;
+}
+
+.cursor-wait {
+	cursor: wait;
+}
+
+.calendar-wrapper {
+	background: url('/static/v1.2.1/img/calendar/background-calendar.jpg') top left no-repeat;
+	@include background-size(cover);
+
+	.lt-ie9 & {
+		/* The url is relative to the document, not to the css file! */
+	    -ms-behavior: url(/static/v1.2.1/js/lib/htc/backgroundsize.min.htc);
+	}
+
+	height: 0;
+	padding: 0;
+	position: relative;
+	width: 100%;
+
+	#calendar {
+		// padding: 20px 0;
+	}
+
+	#cal-overlay {
+		-o-transform: translate3d(0, 0, 0);
+		-ms-transform: translate3d(0, 0, 0);
+		-moz-transform: translate3d(0, 0, 0);
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+
+		@include transition-property('opacity');
+		@include transition-duration(250ms);
+		@include transition-timing-function('ease-in');
+
+		@include opacity(0);
+		background: url("/static/v1.2.1/img/calendar/transparent-overlay.png") top left repeat transparent;
+
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 202;
+
+		&.hide {
+			@include opacity(0);
+
+			height: 0;
+			//z-index: -1;
+		}
+
+		&.on {
+			@include opacity(0.5);
+
+			height: 100%;
+			z-index: 1000;
+		}
+
+		.spinner {
+			@include opacity(1.0);
+
+			height: 50px;
+			left: 50%;
+			margin: -25px 0 0 -25px;
+			position: absolute;
+			top: 50%;
+			width: 50px;
+		}
+	}
+}
+
+// container
+#calendar {
+	color: #ffffff;
+	position: relative;
+
+	// TODO: need to dynamically assign height of this container in JS
+	//min-height: 1000px;
+	max-width: 1280px;
+	margin: 0 auto;
+
+	h1 {
+		color: #ffffff;
+		border-bottom: solid #ffffff 1px;
+		margin-bottom: 0.5em;
+		padding-bottom: 0.5em;
+
+		background: url('/static/v1.2.1/img/calendar/icon-tree@2x.png') 100% 50% no-repeat;
+		background-size: auto 80%;
+
+		@extend .lobster;
+		font-size: calc-em(26px, $base-font-size);
+		font-weight: 400;
+		line-height: 1em;
+
+		strong {
+			display: block;
+			font-size: 2.0em;
+			font-weight: 400;
+			line-height: 0.9em;
+			margin-left: calc-em(4px, $base-font-size);
+		}
+	}
+}
+
+.lt-ie9 #calendar h1 {
+	background: url('/static/v1.2.1/img/calendar/icon-tree.png') 100% 50% no-repeat;
+	background-size: auto;
+}
+
+// Transitions for browser resize
+.calendar-header,
+.calendar-day.animate {
+	-o-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+
+	@include transition-property('width','height','top','left', 'margin-left');
+	@include transition-duration(500ms);
+	@include transition-timing-function('ease-in');
+}
+
+.calendar-header {
+	background: none;
+
+}
+
+.calendar-header-content {
+	width: 90%;
+	margin-top: 18%;
+	margin-left: 5%;
+
+	padding-bottom: 1em;
+	border-bottom: solid #ffffff 1px;
+
+
+	font-size: calc-em(20px, $base-font-size);
+	line-height: 1.5em;
+	@extend .merriweather;
+
+	p, li {
+		font-size: 1.15em;
+		line-height: 1.5em;
+	}
+
+	@include mq($from: tablet) {
+		margin-top: 5%;
+	}
+
+}
+
+.calendar-header {
+	display: none;
+}
+
+.calendar-day {
+	display: none;
+}
+
+
+.calendar-day {
+	-o-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+
+	cursor: pointer;
+	// display: block;
+	// @include opacity(0);
+
+	outline: none;
+	color: #ffffff;
+	text-decoration: none;
+
+	&:focus {
+		outline: none;
+	}
+
+    .calendar-border-1 {
+		@include background-size(cover);
+		background-position: 50% 50%;
+    }
+
+    &:hover,
+    &:active {
+		.calendar-border-3 span {
+			display: none;
+		}
+    }
+
+	&.enable-hover:hover {
+		text-decoration: none;
+
+		@include scale(1.1);
+		@include transition-duration(250ms);
+		@include transition-timing-function('ease-in');
+
+	    .calendar-day-content {
+			border: solid #ffffff 5px;
+	    }
+
+	    .calendar-border-1 {
+			border: none;
+	    }
+
+	    .calendar-border-2 {
+			border: none;
+	    }
+	    .calendar-border-3 {
+	    	border: none;
+	    }
+	}
+
+	&.clicked {
+
+	    .calendar-day-content {
+			border: solid #ffffff 5px;
+	    }
+	    .calendar-border-1 {
+			border: none;
+	    }
+	    .calendar-border-2 {
+			border: none;
+	    }
+	    .calendar-border-3 {
+	    	border: none;
+
+	    	span {
+	    		display: none;
+	    	}
+	    }
+	}
+
+	&.empty {
+		border: none;
+		cursor: default;
+
+	    .calendar-day-content,
+	    .calendar-border-1,
+	    .calendar-border-2,
+	    .calendar-border-3 {
+			border: none;
+	    	display: none;
+	    }
+	}
+}
+
+.calendar-day-content {
+	@include border-radius( calc-em(15px, $base-font-size) );
+
+	width: 80%;
+	height: 80%;
+	margin: 5%;
+	text-align: center;
+}
+
+.calendar-border-1 {
+	@include border-radius( calc-em(12px, $base-font-size) );
+
+	display: table;
+	margin: 0;
+	padding: 0;
+	border-spacing: 0;
+	width: 100%;
+	height: 100%;
+
+	background: url("/static/v1.2.1/img/calendar/transparent-overlay.png") top left repeat;
+	background: rgba(0, 0, 0, 0.5);
+
+	//border: solid #332924 calc-em(3px, $base-font-size);
+	border: solid #332924 3px;
+}
+.calendar-border-2 {
+	display: table-row;
+}
+
+.calendar-border-3 {
+	display: table-cell;
+	vertical-align: middle;
+	//border: dashed #ffffff calc-em(1px, $base-font-size);
+	border: dashed #ffffff 1px;
+
+	@include border-radius( calc-em(15px, $base-font-size) );
+
+	span {
+		font-size: calc-em(78px, $base-font-size);
+		@extend .frederick;
+	}
+}
+
+.calendar-detail {
+	color: #ffffff;
+	display: none;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 201;
+
+	h2 {
+		display: none;
+	}
+
+	.calendar-day {
+		font-weight: 400;
+
+		.calendar-border-3 span {
+			font-size: 98px;
+			line-height: 1em;
+		}
+	}
+
+	.calendar-detail-overlay {
+		@include background-transparent(#000, .5);
+		background-image: url("/static/v1.2.1/img/calendar/date-overlay.png");
+		background-repeat: no-repeat;
+		background-position: 50% 50%;
+		@include background-size(cover);
+
+		position: fixed;
+		z-index: 200;
+		width: 104%;
+		height: 100%;
+
+		// .lt-ie9 & {
+		// 	-ms-behavior: url(/static/v1.2.1/js/lib/htc/backgroundsize.min.htc);
+		// }
+	}
+
+	.calendar-detail-bg {
+		background-position: 50% 50%;
+		background-repeat: no-repeat;
+		@include background-size(cover);
+
+		position: fixed;
+		z-index: 200;
+		width: 104%;
+		height: 100%;
+
+		//.lt-ie9 & {
+			/* The url is relative to the document, not to the css file! */
+		    //-ms-behavior: url(/static/v1.2.1/js/lib/htc/backgroundsize.min.htc);
+		//}
+	}
+
+	.view-asset {
+		&.ajax {
+			@include font(50, 10);
+			padding: 6px 2px;
+			top: 100px;
+		}
+
+		&.button-close {
+			@include font(30, 10);
+			top: 0;
+			margin-top: 0;
+			right: 0;
+		}
+
+		@include mq($from: smalldesktop) {
+			&.ajax {
+				top: 58px;
+			}
+
+		}
+	}
+
+}
+
+.calendar-detail-content {
+	position: relative;
+	z-index: 205;
+	width: 400px;
+
+	margin: 120px auto 0;
+	padding: 1em 0;
+	border-top: solid #ffffff 1px;
+	border-bottom: solid #ffffff 1px;
+
+	@extend .merriweather;
+	font-size: 2em; //calc-em(20px, $base-font-size);
+	line-height: 1.5em;
+
+	/*
+	-webkit-text-shadow: 0px 0px 15px rgba(50, 50, 50, 1);
+	-moz-text-shadow:    0px 0px 15px rgba(50, 50, 50, 1);
+	text-shadow:         0px 0px 15px rgba(50, 50, 50, 1);
+	*/
+	text-shadow: 1px 1px 25px #000000;
+	filter: dropshadow(color=#000000, offx=1, offy=1);
+
+	p, li {
+		font-size: inherit;
+		line-height: inherit;
+
+		a {
+			color: #f7921c;
+
+			&:hover { color: #f7921c; }
+		}
+	}
+
+	@media screen and (max-width: 785px) {
+		width: auto;
+		margin: 0 20px;
+		min-width: 280px;
+		margin-top: 202px;
+	}
+}
+
+// Override top, left set by javascript
+.calendar-day.fixed {
+	cursor: default;
+	display: block;
+    height: 170px;
+    left: 50%;
+    margin-left: -380px;
+	position: absolute;
+    top: 110px;
+    width: 170px;
+    z-index: 205;
+
+	@media screen and (max-width: 785px) {
+		left: 50%;
+		margin-left: -65px;
+		top: 20px;
+	}
+
+	&:hover .calendar-border-3 span {
+		display: block;
+	}
+
+    .calendar-day-content {
+		border: solid #ffffff 5px;
+    }
+    .calendar-border-1 {
+		border: none;
+    }
+    .calendar-border-2 {
+		border: none;
+    }
+    .calendar-border-3 {
+    	border: none;
+    }
+}
+
+/********************************************************
+ * Needs to work without js
+ *
+ * Amends to COA as of 11/25/13
+ ********************************************************/
+.no-js {
+	.calendar-header-content {
+		max-width: 600px;
+		margin: auto auto 20px !important;
+	}
+
+	.calendar-wrapper {
+		float: left;
+	}
+
+	.calendar-day {
+		&.enable-hover:hover {
+			@include scale(1);
+			@include transition-duration(0);
+			@include transition-timing-function('ease-in');
+		}
+	}
+
+	.calendar-day-content {
+		height: 200px !important;
+		float: left !important;
+		width: 200px !important;
+		margin: 25px;
+	}
+}
+
+
+
+/********************************************************
+ * On hover and once clicked we show this background thumbnail
+ ********************************************************/
+.no-touch #calendar-day-1:hover .calendar-border-1,
+#calendar-day-1.clicked .calendar-border-1, { background-image: url('/static/v1.2.1/img/calendar/thumbnails/1.jpg'); }
+
+.no-touch #calendar-day-2:hover .calendar-border-1,
+#calendar-day-2.clicked .calendar-border-1, { background-image: url('/static/v1.2.1/img/calendar/thumbnails/2.jpg'); }
+
+.no-touch #calendar-day-3:hover .calendar-border-1,
+#calendar-day-3.clicked .calendar-border-1, { background-image: url('/static/v1.2.1/img/calendar/thumbnails/3.jpg'); }
+
+.no-touch #calendar-day-4:hover .calendar-border-1,
+#calendar-day-4.clicked .calendar-border-1, { background-image: url('/static/v1.2.1/img/calendar/thumbnails/4.jpg'); }
+
+.no-touch #calendar-day-5:hover .calendar-border-1,
+#calendar-day-5.clicked .calendar-border-1, { background-image: url('/static/v1.2.1/img/calendar/thumbnails/5.jpg'); }
+
+.no-touch #calendar-day-6:hover .calendar-border-1,
+#calendar-day-6.clicked .calendar-border-1, { background-image: url('/static/v1.2.1/img/calendar/thumbnails/6.jpg'); }
+
+.no-touch #calendar-day-7:hover .calendar-border-1,
+#calendar-day-7.clicked .calendar-border-1, { background-image: url('/static/v1.2.1/img/calendar/thumbnails/7.jpg'); }
+
+.no-touch #calendar-day-8:hover .calendar-border-1,
+#calendar-day-8.clicked .calendar-border-1, { background-image: url('/static/v1.2.1/img/calendar/thumbnails/8.jpg'); }
+
+.no-touch #calendar-day-9:hover .calendar-border-1,
+#calendar-day-9.clicked .calendar-border-1, { background-image: url('/static/v1.2.1/img/calendar/thumbnails/9.jpg'); }
+
+.no-touch #calendar-day-10:hover .calendar-border-1,
+#calendar-day-10.clicked .calendar-border-1, { background-image: url('/static/v1.2.1/img/calendar/thumbnails/10.jpg'); }
+
+.no-touch #calendar-day-11:hover .calendar-border-1,
+#calendar-day-11.clicked .calendar-border-1, { background-image: url('/static/v1.2.1/img/calendar/thumbnails/11.jpg'); }
+
+.no-touch #calendar-day-12:hover .calendar-border-1,
+#calendar-day-12.clicked .calendar-border-1, { background-image: url('/static/v1.2.1/img/calendar/thumbnails/12.jpg'); }
+
+.no-touch #calendar-day-13:hover .calendar-border-1,
+#calendar-day-13.clicked .calendar-border-1, { background-image: url('/static/v1.2.1/img/calendar/thumbnails/13.jpg'); }
+
+.no-touch #calendar-day-14:hover .calendar-border-1,
+#calendar-day-14.clicked .calendar-border-1, { background-image: url('/static/v1.2.1/img/calendar/thumbnails/14.jpg'); }
+
+.no-touch #calendar-day-15:hover .calendar-border-1,
+#calendar-day-15.clicked .calendar-border-1, { background-image: url('/static/v1.2.1/img/calendar/thumbnails/15.jpg'); }
+
+.no-touch #calendar-day-16:hover .calendar-border-1,
+#calendar-day-16.clicked .calendar-border-1, { background-image: url('/static/v1.2.1/img/calendar/thumbnails/16.jpg'); }
+
+.no-touch #calendar-day-17:hover .calendar-border-1,
+#calendar-day-17.clicked .calendar-border-1, { background-image: url('/static/v1.2.1/img/calendar/thumbnails/17.jpg'); }
+
+.no-touch #calendar-day-18:hover .calendar-border-1,
+#calendar-day-18.clicked .calendar-border-1, { background-image: url('/static/v1.2.1/img/calendar/thumbnails/18.jpg'); }
+
+.no-touch #calendar-day-19:hover .calendar-border-1,
+#calendar-day-19.clicked .calendar-border-1, { background-image: url('/static/v1.2.1/img/calendar/thumbnails/19.jpg'); }
+
+.no-touch #calendar-day-20:hover .calendar-border-1,
+#calendar-day-20.clicked .calendar-border-1, { background-image: url('/static/v1.2.1/img/calendar/thumbnails/20.jpg'); }
+
+.no-touch #calendar-day-21:hover .calendar-border-1,
+#calendar-day-21.clicked .calendar-border-1, { background-image: url('/static/v1.2.1/img/calendar/thumbnails/21.jpg'); }
+
+.no-touch #calendar-day-22:hover .calendar-border-1,
+#calendar-day-22.clicked .calendar-border-1, { background-image: url('/static/v1.2.1/img/calendar/thumbnails/22.jpg'); }
+
+.no-touch #calendar-day-23:hover .calendar-border-1,
+#calendar-day-23.clicked .calendar-border-1, { background-image: url('/static/v1.2.1/img/calendar/thumbnails/23.jpg'); }
+
+.no-touch #calendar-day-24:hover .calendar-border-1,
+#calendar-day-24.clicked .calendar-border-1, { background-image: url('/static/v1.2.1/img/calendar/thumbnails/24.jpg'); }

@@ -1,0 +1,98 @@
+/**
+ * @class css.base.colours
+ *
+ * Here we define the colour variables that are used throughout the other stylesheets
+ *
+ * ## Usage
+ * Import into your main file using
+ *
+ *     @import "__base/_colours.scss";
+ *
+ */
+
+
+/**
+ * Shades of grey Colours
+ *
+ */
+
+$color-menu-grey: #333333;
+$color-menu-grey-hover: #2d2829;
+$color-nav-grey: #999999;
+
+
+/**
+ * Primary Colours
+ *
+ */
+
+$color-orange: #ed8b00;
+$color-putty: #484848;
+$color-eggshell: #f7f5e8;
+$color-plum: #6f1f44;
+$color-earth: #665348;
+$color-sand: #e9e5c6;
+$color-red: #ee3124;
+$color-ryan: #00b9f2;
+
+$colour-story-body: #555;
+
+
+/**
+ * Secondary Colours
+ *
+ */
+
+$color-violet: #726e7e;
+$color-palepeach: #d6afa0;
+$color-stonegreen: #c0cbb8;
+$color-pine: #8f9658;
+$color-fuchsia:  #d589bb;
+
+/** 
+ * Themes
+ *
+ */
+
+$themesl: 'putty', 'orange', 'plum', 'earth', 'fuchsia';
+$colorsl: $color-putty, $color-orange, $color-plum, $color-earth, $color-fuchsia;
+
+@for $i from 1 through length($themesl) {
+
+	.theme-#{nth($themesl, $i)} {
+		.theme-bg,
+		.flex-active,
+		.slider-nav a:hover {
+			background-color: nth($colorsl, $i) !important;
+		}
+		.theme-color {
+			color: nth($colorsl, $i);
+		}
+		.theme-border {
+			border-color: nth($colorsl, $i);
+		}
+	}
+
+}
+
+/**
+ * Social Colours
+ *
+ */
+
+// @var {color} $color-social-facebook - Colour
+$color-social-facebook: #445599;
+$color-social-facebook-hover: #6977ad;
+
+$color-social-twitter: #57a6e4;
+$color-social-twitter-hover: #79b8e9;
+
+$color-social-google: #c32f1c;
+$color-social-google-hover: #cf5949;
+
+$color-social-contact: #e0591a;
+$color-social-contact-hover: #e67a48;
+
+$color-social-pinterest: #c92228;
+$color-social-pinterest-hover: lighten(#c92228,10%);
+

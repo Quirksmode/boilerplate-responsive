@@ -1,0 +1,40 @@
+/**
+ * @class css.
+ *
+ *
+ * ## Usage
+ * Import into your main file using
+ *
+ *     @import "__";
+ *
+ */
+
+.story {
+
+	.view-asset {
+		// Icon Font
+		@include transition(color 0.3s ease-out, background 0.3s ease-out);
+		@include font(30, 10);
+		@include background-transparent(#000, .7);
+		@include border-radius(0, 0, 0, 8px);
+		position: absolute;
+		z-index: 500;
+		color: #fff;
+		outline: none;
+		right: 0;
+		padding: 18px;
+
+		@include mq($from: smalldesktop) {
+			@include font(45, 10);
+			@include border-radius(8px, 0, 0, 8px);
+			margin-top: 60px;
+		}
+
+		&:hover {
+			@include background-transparent(#000, 1);
+			text-decoration: none;
+		}
+
+	}
+
+}

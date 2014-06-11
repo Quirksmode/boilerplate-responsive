@@ -1,0 +1,186 @@
+/**
+ * @class css.
+ *
+ *
+ * ## Usage
+ * Import into your main file using
+ *
+ *     @import "__";
+ *
+ */
+
+.related-stories {
+	@extend .cf;
+	clear: both;
+
+	h2 {
+		@include font(24, 28, $font-roboto);
+		font-weight: 300;
+		color: #fff;
+		top: 40px;
+		position: absolute;
+		z-index: 1000;
+		max-width: 1280px;
+		width: 85%;
+		margin: 0 auto;
+		left: 0;
+		right: 0;
+	}
+
+	.slider {
+
+		// Fix for IE8 due to background size fix not working when in slider
+		.aspect-outer {
+			.lt-ie9 & {
+				height: 550px !important;
+			}
+		}
+
+		.theme-bg {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+		.related-aspect {
+			img {
+				display: none !important;
+
+				.lt-ie9 & {
+					display: block !important;
+				}
+			}
+		}
+		.text-wrap {
+			margin: 120px 0 40px -22px;
+			max-width: none;
+			width: 100%;
+			min-height: 351px;
+			-webkit-backface-visibility: hidden;
+
+			h3 {
+				@include font(30, 34, $font-roboto);
+				font-weight: 100;
+				color: #fff;
+				border-style: solid;
+				border-width: 0 0 0 3px;
+				margin-bottom: 25px;
+				padding-left: 19px;
+			}
+
+			.description {
+				@include font(15, 27, $font-roboto);
+				margin: 0 0 40px 25px;
+			}
+
+
+			.read-more {
+				@include transition(background 0.3s ease-out);
+				@include background-transparent(#000, 0);
+				@include font(14, 14, $font-roboto);
+				display: inline-block;
+				padding: 13px 18px 16px 18px;
+				color: #fff;
+				border: 1px solid #fff;
+				margin-left: 25px;
+
+				&:hover {
+					@include background-transparent(#000, 0.4);
+					text-decoration: none;
+				}
+			}
+
+		}
+
+		.flex-direction-nav,
+		.flex-control-nav {
+			display: none;
+		}
+	}
+
+	.slider-bottom-wrap {
+		.slider-nav-wrap {
+			background: none !important;
+
+			.slider-nav {
+				padding-bottom: 5px;
+
+				li {
+					a {
+						&.flex-active,
+						&:hover {
+							border: 2px solid #fff;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	@include mq($from: tablet) {
+		.slider {
+			.text-wrap {
+				margin-top: 150px;
+				width: 90%;
+
+				h3 {
+					@include font(45, 50, $font-roboto);
+				}
+
+				.description {
+					@include font(16, 29);
+				}
+			}
+		}
+	}
+
+	@include mq($from: smalldesktop) {
+		h2 {
+			@include font(30, 34, $font-roboto);
+			top: 60px;
+		}
+
+		.slider {
+			.text-wrap {
+				margin-top: 175px;
+				width: 80%;
+
+				h3 {
+					@include font(55, 68, $font-roboto);
+				}
+
+				.description {
+					@include font(18, 31);
+				}
+			}
+		}
+	}
+
+	@include mq($from: desktop) {
+		.slider {
+			.text-wrap {
+				margin-top: 200px;
+				width: 70%;
+			}
+		}
+	}
+
+	@include mq($from: superdesktop) {
+		.slider {
+			.text-wrap {
+				margin-top: 185px;
+			}
+		}
+	}
+
+	@include mq($from: megadesktop) {
+		h2 {
+			top: 75px;
+		}
+	}
+
+}
